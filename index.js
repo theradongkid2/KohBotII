@@ -163,7 +163,7 @@ client.on("guildMemberRemove", async member => {
           icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
       },
   };
-  client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+  client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
 })
 
 client.on("guildMemberAdd", async member => {
@@ -185,7 +185,7 @@ client.on("guildMemberAdd", async member => {
           icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
       },
   };
-  client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+  client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
 })
 
 client.on("message", async message => {
@@ -451,7 +451,7 @@ client.on("message", async message => {
               icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
           },
       };
-      client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+      client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
     }
   
   
@@ -494,7 +494,7 @@ client.on("message", async message => {
               icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
           },
       };
-      client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+      client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
     }
   
 
@@ -528,7 +528,7 @@ client.on("message", async message => {
               icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
           },
       };
-      client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+      client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
       message.reply(`${member} has been warned.`);
       client.users.cache.get(memberId).send(`You have been warned in ${server} for ${reason}`);
   };
@@ -590,30 +590,6 @@ client.on("message", async message => {
     });
   }
 
-  if(command === "tommyshut"){
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    if(tommyShut === true){
-      tommyShut = false
-      message.channel.send("Tommy can now speak without being told to shut up.")
-    } else  if (tommyShut === false){
-      tommyShut = true
-      message.channel.send("Tommy can now shut up.")
-    }
-  }
-
-  if(command === "tommysaid"){
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    if(tommySaid === false){
-      tommySaid = true
-      message.channel.send("I will translate tommy's speech from now on.")
-    } else  if (tommySaid === true){
-      tommySaid = false
-      message.channel.send("I will shut up now.")
-    }
-  }
-
   if(command === "quote"){
     fetch("https://type.fit/api/quotes")
     .then(function(response) {
@@ -645,14 +621,6 @@ client.on("message", async message => {
     };
     message.channel.send({ embed: inviteEmbed });
     });
-  }
-
-  if(command === "adminaboose"){
-    if(!message.member.roles.cache.some(r=>[ "・ ── ・ Empress ・ ── ・", "・ ── ・ Archdukes ・ ── ・", "Ruse"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    var role = message.guild.roles.cache.find(role => role.id === "722234813041475696");
-    message.member.roles.add(role);
-    message.delete()
   }
 
   if(command === "pong"){
@@ -850,29 +818,6 @@ client.on("message", async message => {
     });
   }
 
-  if(command === "executeorder69"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    const Role = message.mentions.roles.first();
-    message.mentions.members.cache.forEach(member => {
-      member.roles.remove(Role).catch(e => console.error(e));
-    });
-    message.reply("Order Executed...")
-  }
-
-  if(command === "test"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    const Role = "722234813041475696";
-    message.member.roles.add(Role);
-  }
-
-  if(command === "testing"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
-    const Role = "722234813041475696";
-    message.member.roles.remove(Role);
-  }
 
   if(command === "bubblesort"){
     const args = message.content.split(' ');
@@ -982,7 +927,7 @@ client.on("message", async message => {
             icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
-    client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+    client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
     client.users.cache.get(memberId).send(`You have been muted in ${server} for ${reason}`);
     message.reply(`${member} is now muted.`);
   }
@@ -1017,7 +962,7 @@ client.on("message", async message => {
             icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
-    client.channels.cache.get("767659295230918676").send({ embed: warnEmbed });
+    client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
     message.reply(`${member} is now unmuted.`);
   }
 
