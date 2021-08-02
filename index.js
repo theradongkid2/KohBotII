@@ -97,9 +97,7 @@ client.on("message", async message => {
   var messageContent = message.content;
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
-    console.log(e);
     blacklistedChar.forEach(d => {
-      console.log(d);
       if(e.split("")[1].toLowerCase() === d.split("")[1].toLowerCase()){
         var wordCharArr = e.split("");
         wordCharArr.forEach(b => {
@@ -107,14 +105,13 @@ client.on("message", async message => {
           else if(b === "3") b = "e";
           else if(b === "ü") b = "u";
         });
-        e = wordCharArr.join();
+        e = wordCharArr.join("");
       };
       if(e.includes(d)){
         message.delete();
       };
     });
     blacklistedWords.forEach(a => {
-      console.log(a)
       if(e.split("")[1].toLowerCase() === a.split("")[1].toLowerCase()){
         var wordCharArr = e.split("");
         wordCharArr.forEach(b => {
@@ -122,13 +119,12 @@ client.on("message", async message => {
           else if(b === "3") b = "e";
           else if(b === "ü") b = "u";
         });
-        e = wordCharArr.join();
+        e = wordCharArr.join("");
       };
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
       };
     });
-    console.log(e);
   });
 });
 
