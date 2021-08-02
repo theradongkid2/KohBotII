@@ -117,7 +117,7 @@ client.on("message", async message => {
           },
           fields: [
             {
-            name: `Warned User: ${member.user.tag}`,
+            name: `Warned User: ${message.member.user.tag}`,
             value: `Message: ${messageContent}\n Blacklisted Word(s) Used: ${a}`
             },
           ],
@@ -153,7 +153,7 @@ client.on("message", async message => {
           },
           fields: [
             {
-            name: `Warned User: ${member.user.tag}`,
+            name: `Warned User: ${message.member.user.tag}`,
             value: `Message: ${messageContent}\n Blacklisted Word(s) Used: ${a}`
             },
           ],
