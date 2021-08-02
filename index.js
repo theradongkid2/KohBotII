@@ -72,7 +72,10 @@ client.on("message", async message => {
     "niggar",
     "niqqa",
     "niigar",
-    "nigger"
+    "nigger",
+    "cock",
+    "pussy",
+    "penis"
   ];
 
   var blacklistedChar = [
