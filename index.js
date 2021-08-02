@@ -107,6 +107,7 @@ client.on("message", async message => {
           if(b === "0") b = "o";
           else if(b === "3") b = "e";
           else if(b === "ü") b = "u";
+          else if(b === "ï") b = "i";
         });
         e = wordCharArr.join("");
       };
