@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 var counter = 0;
 var tommyShut = false;
 var tommySaid = false;
-var lastUser = "819852916172914699"
+var lastUser = "730004103719288904"
 var botHurtResponses = ["you cant catch me im the gingerbread man" , "do you dare to harm the seraphim?", "are you challenging me mortal", "how dare you try commit such war crimes", `k!warn @user bad boy`, "never going to happen", "haha, look where you are then look up.", "Would you like it if I did it to you?", "Perms are a privalege, not a right", "So you have chosen death", "do you honestly think that you could find a loophole in my code?", "Nice Try"];
 var userHurtResponses = ["are you sure about this", "don't do it commander", "call lifeline on 13 11 14", "what are you? a masochist?", "please do not make me kill you", "calm down calm down, theres no need to do that", "no"]
 function randomise(num){
@@ -109,6 +109,28 @@ client.on("message", async message => {
       };
       if(e.includes(d)){
         message.delete();
+        const warnEmbed = {
+          color: 0xFF0000,
+          title: `Blacklisted Message Deleted`,
+          thumbnail: {
+            url: member.user.avatarURL(String)
+          },
+          fields: [
+            {
+            name: `Warned User: ${member.user.tag}`,
+            value: `Message: ${messageContent}\n Blacklisted Word(s) Used: ${a}`
+            },
+          ],
+          timestamp: new Date(),
+            footer: {
+                text: 'KohBot by MasterKohder6',
+                icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+            },
+        };
+        //client.channels.cache.get("839002657908850688")
+        message.channel.send({ embed: warnEmbed });
+        message.reply(`You cannot say that here!`);
+        client.users.cache.get(memberId).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
       };
     });
     blacklistedWords.forEach(a => {
@@ -123,6 +145,28 @@ client.on("message", async message => {
       };
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
+        const warnEmbed = {
+          color: 0xFF0000,
+          title: `Blacklisted Message Deleted`,
+          thumbnail: {
+            url: member.user.avatarURL(String)
+          },
+          fields: [
+            {
+            name: `Warned User: ${member.user.tag}`,
+            value: `Message: ${messageContent}\n Blacklisted Word(s) Used: ${a}`
+            },
+          ],
+          timestamp: new Date(),
+            footer: {
+                text: 'KohBot by MasterKohder6',
+                icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+            },
+        };
+        //client.channels.cache.get("839002657908850688")
+        message.channel.send({ embed: warnEmbed });
+        message.reply(`You cannot say that here!`);
+        client.users.cache.get(memberId).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
       };
     });
   });
@@ -157,7 +201,7 @@ client.on("guildMemberRemove", async member => {
           icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
       },
   };
-  client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+  client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
 })
 
 client.on("guildMemberAdd", async member => {
@@ -179,7 +223,7 @@ client.on("guildMemberAdd", async member => {
           icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
       },
   };
-  client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+  client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
 })
 
 client.on("message", async message => {
@@ -247,11 +291,7 @@ client.on("message", async message => {
                   {
                     name: `Unmute (Admins Only)`,
                     value: `Usage: k!unmute @user [used to unmute members]`
-                    },  
-                    {
-                      name: `Snipe (Removed)`,
-                      value: `Usage: k!snipe [Show last deleted message and who sent it]`
-                      },
+                    }
         ],
         timestamp: new Date(),
           footer: {
@@ -397,7 +437,7 @@ client.on("message", async message => {
       m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
   };
   if(command === "purge") {
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       const deleteCount = parseInt(args[0], 10);
       if(!deleteCount || deleteCount < 2 || deleteCount > 10000)
@@ -408,12 +448,12 @@ client.on("message", async message => {
     }
   
      if(command === "kick") {
-      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
       if(!member)
         return message.reply("Please mention a valid member of this server");
-        if(member.id === "819852916172914699") return message.reply(botHurtResponses[randomise(11)]);
+        if(member.id === "730004103719288904") return message.reply(botHurtResponses[randomise(11)]);
         if(member.id === message.author.id) return message.reply(userHurtResponses[randomise(6)]);
       if(!member.kickable) 
         return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
@@ -445,19 +485,19 @@ client.on("message", async message => {
               icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
           },
       };
-      client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+      client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     }
   
   
     if(command === "ban") {
-      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       let member = message.mentions.members.first();
       if(!member)
         return message.reply("Please mention a valid member of this server");
       if(!member.bannable) 
         return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
-      if(member.id === "819852916172914699") return message.reply(botHurtResponses[randomise(11)]);
+      if(member.id === "730004103719288904") return message.reply(botHurtResponses[randomise(11)]);
       if(member.id === message.author.id) return message.reply(userHurtResponses[randomise(6)]);
       let Reason = args.slice(1).join(' ');
       if(!Reason) Reason = "No reason provided";
@@ -488,12 +528,12 @@ client.on("message", async message => {
               icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
           },
       };
-      client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+      client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     }
   
 
   if(command === "warn"){
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator"].includes(r.name)))
+    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)))
         return message.reply("Sorry, you don't have permissions to use this!");
     let moderator = message.member.user
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
@@ -522,7 +562,7 @@ client.on("message", async message => {
               icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
           },
       };
-      client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+      client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
       message.reply(`${member} has been warned.`);
       client.users.cache.get(memberId).send(`You have been warned in ${server} for ${reason}`);
   };
@@ -888,16 +928,16 @@ client.on("message", async message => {
   }
 
   if(command === "mute"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
-    const Role = "766084383064850462";
+    const Role = "832580239061549126";
     let member = message.mentions.members.first();
     let memberId = message.mentions.members.first().id
     let server = message.guild.name;
     let reason = args.slice(1).join(' ');
     if(!reason) reason = "No reason provided!"
     if(!member) return message.channel.send("Please specify member to be muted.")
-    if(member.id === "819852916172914699") return message.reply(botHurtResponses[randomise(11)]);
+    if(member.id === "730004103719288904") return message.reply(botHurtResponses[randomise(11)]);
     if(member.id === message.author.id) return message.reply(userHurtResponses[randomise(6)]);
     if(member.roles.cache.some(r=>[ "Muted"].includes(r.name)) )
         return message.reply(" give it a rest. My man is already muted. Why don't you try k!unmute");
@@ -921,15 +961,15 @@ client.on("message", async message => {
             icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
-    client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+    client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     client.users.cache.get(memberId).send(`You have been muted in ${server} for ${reason}`);
     message.reply(`${member} is now muted.`);
   }
 
   if(command === "unmute"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator"].includes(r.name)) )
+    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
-    const Role = "766084383064850462";
+    const Role = "832580239061549126";
     let member = message.mentions.members.first();
     if(member.id === message.author.id) return message.reply("Nice Try Buddy.");
     let memberId = message.mentions.members.first().id
@@ -956,7 +996,7 @@ client.on("message", async message => {
             icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
         },
     };
-    client.channels.cache.get("792394363442429983").send({ embed: warnEmbed });
+    client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     message.reply(`${member} is now unmuted.`);
   }
 
