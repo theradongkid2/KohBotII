@@ -41,7 +41,7 @@ function scheduleWarning(time, triggerThis){
 
 //Terminal User Interface
 client.on("ready", () => {
-  console.log(`Koh Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
+  console.log(`KohBot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   client.user.setActivity(`k!help - Having an Existential Crisis`, { type: 'STREAMING' , url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"});
   console.log("Servers:");
     client.guilds.cache.forEach((guild) => {
@@ -55,34 +55,83 @@ client.on("message", async message => {
 })
 
 client.on("message", async message => {
-  if(message.channel.id === "763567159871406080"){
-    counter++;
-    let x = randomise(5)
-    if(counter % x === 0 && lastUser !== "819852916172914699"){
-      message.channel.send("mm");
-    }
-    if(message.content !== "mm"){
-      message.delete().catch(error => {
-        if (error.code !== Discord.Constants.APIErrors.UNKNOWN_MESSAGE) {
-          console.error("");
-        }
-      });
-      
-      counter--
-      if(message.author.bot) return;
-      client.users.cache.get(message.author.id).send(`You sent a non mm in mm channel!!! This is your first warning :angry:!`);
-      return
-    }
-    if(message.author.id === lastUser){
-      message.delete()
-      counter--
-      if(message.author.bot) return;
-      client.users.cache.get(message.author.id).send(`You pulled a double mm!!! This is your first warning :angry:!`);
-      return
-    }
-    lastUser = message.author.id;
-  }
-})
+  var blacklistedWords = [
+    "cunt",
+    "nigga",
+    "cum",
+    "faggot",
+    "hentai",
+    "porn",
+    "pussy",
+    "retard",
+    "sex",
+    "slut",
+    "whore",
+    "chink",
+    "retarded",
+    "niggar",
+    "niqqa",
+    "niigar",
+    "nigger"
+  ];
+
+  var blacklistedChar = [
+    "cunt",
+    "nigga",
+    "faggot",
+    "hentai",
+    "porn",
+    "pussy",
+    "retard",
+    "sex",
+    "slut",
+    "whore",
+    "chink",
+    "retarded",
+    "niggar",
+    "niqqa",
+    "niigar",
+    "nigger"
+  ];
+
+  var messageContent = message.content();
+  var messageContentArr = messageContent.split(" ");
+  messageContentArr.forEach(e => {
+    console.log(e);
+    blacklistedChar.forEach(d => {
+      console.log(d);
+      if(e.split("")[1].toLowerCase() === d.split("")[1].toLowerCase()){
+        var wordCharArr = e.split("");
+        wordCharArr.forEach(b => {
+          if(b === "0") b = "o";
+          else if(b === "3") b = "e";
+          else if(b === "ü") b = "u";
+        });
+        e = wordCharArr.join();
+      };
+      if(e.includes(d)){
+        message.delete();
+      };
+    });
+    blacklistedWords.forEach(a => {
+      console.log(a)
+      if(e.split("")[1].toLowerCase() === a.split("")[1].toLowerCase()){
+        var wordCharArr = e.split("");
+        wordCharArr.forEach(b => {
+          if(b === "0") b = "o";
+          else if(b === "3") b = "e";
+          else if(b === "ü") b = "u";
+        });
+        e = wordCharArr.join();
+      };
+      if(e.toLowerCase() === a.toLowerCase()){
+        message.delete();
+      };
+    });
+    console.log(e);
+  });
+});
+
 
 var savedMessage;
 var messageAuthor;
@@ -100,47 +149,6 @@ client.on("message", async message => {
     if(message.channel.id === "763567159871406080") return;
     message.reply("Shut Up")
     client.users.cache.get(message.author.id).send(`Management would kindly request for you to shut up. :)`);
-  }
-})
-
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(tommySaid === false) return;
-  if(message.author.id === "354170428727754753"){
-    if(message.channel.id === "763567159871406080") return;
-    var messageContent = message.content;
-    var str = messageContent;
-    let temp = str.split(" ").map(translatePigLatin);  
-    var answer = temp.join(" ").toLowerCase();
-      
-    message.channel.send(`tommy said: ${answer}`);
-
-    
-    function translatePigLatin(str) {
-      //gives us something to work with in array form
-      let newStr = [...str];
-      //regex to test words with for vowels
-      let vowels = /[aeiou]/gi;
-      
-      //first line determines if the first character in the word is a vowel
-    if (vowels.test(str[0]) === true) {
-      return str + "way"; 
-    } else if (str.search(vowels) > 0) { //if the word has a vowel but not the first letter
-      var temp = str.slice(0, str.search(vowels)); //get all consonants to the first vowel
-      newStr.push(temp, "ay"); //pushes those consonants and "ay" to the end of the word
-      for (var i = 0; i < str.search(vowels); i++) { // for loop to remove consonants off the array
-        newStr.shift();
-      }
-      return newStr.join("");
-      
-    }
-    
-    if (vowels.test(str) === false) {
-      
-      return str + "ay";
-    }
-    }
-      
   }
 })
 
