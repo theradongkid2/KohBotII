@@ -94,7 +94,7 @@ client.on("message", async message => {
     "nigger"
   ];
 
-  var messageContent = message.content();
+  var messageContent = message.content;
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
     console.log(e);
@@ -141,16 +141,6 @@ client.on("messageDelete", async message => {
   messageAuthor = message.author;
 })
 
-
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(tommyShut === false) return;
-  if(message.author.id === "354170428727754753"){
-    if(message.channel.id === "763567159871406080") return;
-    message.reply("Shut Up")
-    client.users.cache.get(message.author.id).send(`Management would kindly request for you to shut up. :)`);
-  }
-})
 
 client.on("guildMemberRemove", async member => {
   const warnEmbed = {
