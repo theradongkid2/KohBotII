@@ -113,7 +113,7 @@ client.on("message", async message => {
           color: 0xFF0000,
           title: `Blacklisted Message Deleted`,
           thumbnail: {
-            url: member.user.avatarURL(String)
+            url: message.member.user.avatarURL(String)
           },
           fields: [
             {
@@ -130,7 +130,7 @@ client.on("message", async message => {
         //client.channels.cache.get("839002657908850688")
         message.channel.send({ embed: warnEmbed });
         message.reply(`You cannot say that here!`);
-        client.users.cache.get(memberId).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
       };
     });
     blacklistedWords.forEach(a => {
@@ -149,7 +149,7 @@ client.on("message", async message => {
           color: 0xFF0000,
           title: `Blacklisted Message Deleted`,
           thumbnail: {
-            url: member.user.avatarURL(String)
+            url: message.member.user.avatarURL(String)
           },
           fields: [
             {
@@ -166,7 +166,7 @@ client.on("message", async message => {
         //client.channels.cache.get("839002657908850688")
         message.channel.send({ embed: warnEmbed });
         message.reply(`You cannot say that here!`);
-        client.users.cache.get(memberId).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
       };
     });
   });
