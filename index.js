@@ -47,11 +47,58 @@ client.on("ready", () => {
     client.guilds.cache.forEach((guild) => {
         console.log(" - " + guild.name);
     });
-  scheduleWarning('20:45', function() { client.channels.cache.get("699967983136800890").send("hi"); });
+  scheduleWarning('18:30', function() { client.channels.cache.get("863313143161159720").send("hi"); });
 });
 
+
 client.on("message", async message => {
-  if(message.channel.id === "792392107414257745" && message.author.id === "413882334593417216") message.delete();
+  var messageContent = message.content;
+  if(messageContent.startsWith("https://tenor.com/view/")) return;
+  if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+    message.delete();
+    const warnEmbed = {
+      color: 0xFF0000,
+      title: `Message with Link Deleted`,
+      thumbnail: {
+        url: message.member.user.avatarURL(String)
+      },
+      fields: [
+        {
+        name: `Warned User: ${message.member.user.tag}`,
+        value: `Message: ${messageContent}`
+        },
+      ],
+      timestamp: new Date(),
+        footer: {
+            text: 'KohBot by MasterKohder6',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+        },
+    };
+    client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
+    message.reply(`You cannot send links here!`);
+  } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+    message.delete();
+    const warnEmbed = {
+      color: 0xFF0000,
+      title: `Message with Link Deleted`,
+      thumbnail: {
+        url: message.member.user.avatarURL(String)
+      },
+      fields: [
+        {
+        name: `Warned User: ${message.member.user.tag}`,
+        value: `Message: ${messageContent}`
+        },
+      ],
+      timestamp: new Date(),
+        footer: {
+            text: 'KohBot by MasterKohder6',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+        },
+    };
+    client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
+    message.reply(`You cannot send links here!`);
+  };
 })
 
 client.on("message", async message => {
