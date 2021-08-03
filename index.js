@@ -155,15 +155,15 @@ client.on("message", async message => {
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
     blacklistedChar.forEach(d => {
-        var wordCharArr = e.split("");
-        wordCharArr.forEach(b => {
-          if(b === "0") b = "o";
-          else if(b === "3") b = "e";
-          else if(b === "ü") b = "u";
-          else if(b === "ï") b = "i";
-          else if(b === "5") b = "5";
-          else if(b === "1") b = "i";
-        });
+      var wordCharArr = e.split("");
+      wordCharArr.forEach(b => {
+        if(b === "0") b = "o";
+        else if(b === "3") b = "e";
+        else if(b === "ü") b = "u";
+        else if(b === "ï") b = "i";
+        else if(b === "5") b = "5";
+        else if(b === "1") b = "i";
+      });
       e = wordCharArr.join("");
       if(e.includes(d)){
         message.delete();
@@ -196,15 +196,16 @@ client.on("message", async message => {
       };
     });
     blacklistedWords.forEach(a => {
-      if(e.split("")[1].toLowerCase() === a.split("")[1].toLowerCase()){
-        var wordCharArr = e.split("");
-        wordCharArr.forEach(b => {
-          if(b === "0") b = "o";
-          else if(b === "3") b = "e";
-          else if(b === "ü") b = "u";
-        });
-        e = wordCharArr.join("");
-      };
+      var wordCharArr = e.split("");
+      wordCharArr.forEach(b => {
+        if(b === "0") b = "o";
+        else if(b === "3") b = "e";
+        else if(b === "ü") b = "u";
+        else if(b === "ï") b = "i";
+        else if(b === "5") b = "5";
+        else if(b === "1") b = "i";
+      });
+      e = wordCharArr.join("");
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
         let reason = args.slice(1).join(' ');
