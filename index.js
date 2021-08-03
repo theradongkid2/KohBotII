@@ -167,7 +167,7 @@ client.on("message", async message => {
       e = wordCharArr.join("");
       if(e.includes(d)){
         message.delete();
-        let memberId = message.mentions.members.first().id
+        let memberId = message.member.id
         let server = message.guild.name;
         let member = message.member;
         const warnEmbed = {
@@ -206,6 +206,7 @@ client.on("message", async message => {
       e = wordCharArr.join("");
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
+        let memberId = message.member.id
         let server = message.guild.name; 
         let member = message.member; 
         const warnEmbed = {
