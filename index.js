@@ -141,7 +141,6 @@ client.on("message", async message => {
     "porn",
     "pussy",
     "retard",
-    "sex",
     "slut",
     "whore",
     "chink",
