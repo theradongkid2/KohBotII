@@ -169,6 +169,7 @@ client.on("message", async message => {
         message.delete();
         let memberId = message.mentions.members.first().id
         let server = message.guild.name;
+        let member = message.member;
         const warnEmbed = {
           color: 0xFFFF00,
           title: `Warn Log:`,
@@ -205,7 +206,8 @@ client.on("message", async message => {
       e = wordCharArr.join("");
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
-        let server = message.guild.name;  
+        let server = message.guild.name; 
+        let member = message.member; 
         const warnEmbed = {
           color: 0xFFFF00,
           title: `Warn Log:`,
