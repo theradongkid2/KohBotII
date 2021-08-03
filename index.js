@@ -162,6 +162,8 @@ client.on("message", async message => {
           else if(b === "3") b = "e";
           else if(b === "ü") b = "u";
           else if(b === "ï") b = "i";
+          else if(b === "5") b = "5";
+          else if(b === "1") b = "i";
         });
         e = wordCharArr.join("");
       };
