@@ -155,7 +155,6 @@ client.on("message", async message => {
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
     blacklistedChar.forEach(d => {
-      if(e.split("")[0].toLowerCase() === d.split("")[0].toLowerCase()){
         var wordCharArr = e.split("");
         wordCharArr.forEach(b => {
           if(b === "0") b = "o";
@@ -165,8 +164,7 @@ client.on("message", async message => {
           else if(b === "5") b = "5";
           else if(b === "1") b = "i";
         });
-        e = wordCharArr.join("");
-      };
+      e = wordCharArr.join("");
       if(e.includes(d)){
         message.delete();
         let memberId = message.mentions.members.first().id
