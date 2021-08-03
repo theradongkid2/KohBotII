@@ -168,10 +168,7 @@ client.on("message", async message => {
       if(e.includes(d)){
         message.delete();
         let memberId = message.mentions.members.first().id
-        let reason = args.slice(1).join(' ');
         let server = message.guild.name;
-        if(!reason){reason = "No reason provided"};
-      
         const warnEmbed = {
           color: 0xFFFF00,
           title: `Warn Log:`,
@@ -208,10 +205,7 @@ client.on("message", async message => {
       e = wordCharArr.join("");
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
-        let reason = args.slice(1).join(' ');
-        let server = message.guild.name;
-        if(!reason){reason = "No reason provided"};
-    
+        let server = message.guild.name;  
         const warnEmbed = {
           color: 0xFFFF00,
           title: `Warn Log:`,
