@@ -76,28 +76,35 @@ client.on("message", async message => {
     };
     client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     message.reply(`You cannot send links here!`);
+    client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for sending links in general!`);
   } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
     message.delete();
-    const warnEmbed = {
-      color: 0xFF0000,
-      title: `Message with Link Deleted`,
-      thumbnail: {
-        url: message.member.user.avatarURL(String)
-      },
-      fields: [
-        {
-        name: `Warned User: ${message.member.user.tag}`,
-        value: `Message: ${messageContent}`
+    let memberId = message.mentions.members.first().id
+    let reason = args.slice(1).join(' ');
+    let server = message.guild.name;
+      if(!reason){reason = "No reason provided"};
+    
+      const warnEmbed = {
+        color: 0xFFFF00,
+        title: `Warn Log:`,
+        thumbnail: {
+          url: member.user.avatarURL(String)
         },
-      ],
-      timestamp: new Date(),
-        footer: {
-            text: 'KohBot by MasterKohder6',
-            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
-        },
-    };
+        fields: [
+          {
+          name: `Warned User: ${member.user.tag}`,
+          value: `Warn Reason: Links in General\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
+          },
+        ],
+        timestamp: new Date(),
+          footer: {
+              text: 'KohBot by MasterKohder6',
+              icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+          },
+      };
     client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     message.reply(`You cannot send links here!`);
+    client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for sending links in general!`);
   };
 })
 
@@ -160,16 +167,21 @@ client.on("message", async message => {
       };
       if(e.includes(d)){
         message.delete();
+        let memberId = message.mentions.members.first().id
+        let reason = args.slice(1).join(' ');
+        let server = message.guild.name;
+        if(!reason){reason = "No reason provided"};
+      
         const warnEmbed = {
-          color: 0xFF0000,
-          title: `Blacklisted Message Deleted`,
+          color: 0xFFFF00,
+          title: `Warn Log:`,
           thumbnail: {
-            url: message.member.user.avatarURL(String)
+            url: member.user.avatarURL(String)
           },
           fields: [
             {
-            name: `Warned User: ${message.member.user.tag}`,
-            value: `Message: ${messageContent}\n Blacklisted Word(s) Used: ${a}`
+            name: `Warned User: ${member.user.tag}`,
+            value: `Warn Reason: Use of Blacklisted Words\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
             },
           ],
           timestamp: new Date(),
@@ -195,16 +207,20 @@ client.on("message", async message => {
       };
       if(e.toLowerCase() === a.toLowerCase()){
         message.delete();
+        let reason = args.slice(1).join(' ');
+        let server = message.guild.name;
+        if(!reason){reason = "No reason provided"};
+    
         const warnEmbed = {
-          color: 0xFF0000,
-          title: `Blacklisted Message Deleted`,
+          color: 0xFFFF00,
+          title: `Warn Log:`,
           thumbnail: {
-            url: message.member.user.avatarURL(String)
+            url: member.user.avatarURL(String)
           },
           fields: [
             {
-            name: `Warned User: ${message.member.user.tag}`,
-            value: `Message: ${messageContent}\n Blacklisted Word(s) Used: ${a}`
+            name: `Warned User: ${member.user.tag}`,
+            value: `Warn Reason: Use of Blacklisted Words\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
             },
           ],
           timestamp: new Date(),
