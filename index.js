@@ -155,7 +155,7 @@ client.on("message", async message => {
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
     blacklistedChar.forEach(d => {
-      if(e.split("")[1].toLowerCase() === d.split("")[1].toLowerCase()){
+      if(e.split("")[0].toLowerCase() === d.split("")[0].toLowerCase()){
         var wordCharArr = e.split("");
         wordCharArr.forEach(b => {
           if(b === "0") b = "o";
