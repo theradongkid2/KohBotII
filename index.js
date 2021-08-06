@@ -191,6 +191,7 @@ client.on("message", async message => {
         client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
         message.reply(`You cannot say that here!`);
         client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        return;
       };
     });
     blacklistedWords.forEach(a => {
@@ -236,6 +237,133 @@ client.on("message", async message => {
   });
 });
 
+client.on("messageUpdate", async (oldMessage, message) => {
+  var blacklistedWords = [
+    "cunt",
+    "nigga",
+    "cum",
+    "faggot",
+    "hentai",
+    "porn",
+    "pussy",
+    "retard",
+    "slut",
+    "whore",
+    "chink",
+    "retarded",
+    "niggar",
+    "niqqa",
+    "niigar",
+    "nigger",
+    "cock",
+    "pussy",
+    "penis"
+  ];
+
+  var blacklistedChar = [
+    "cunt",
+    "nigga",
+    "faggot",
+    "hentai",
+    "porn",
+    "pussy",
+    "retard",
+    "slut",
+    "whore",
+    "chink",
+    "retarded",
+    "niggar",
+    "niqqa",
+    "niigar",
+    "nigger"
+  ];
+
+  var messageContent = message.content;
+  var messageContentArr = messageContent.split(" ");
+  messageContentArr.forEach(e => {
+    blacklistedChar.forEach(d => {
+      var wordCharArr = e.split("");
+      wordCharArr.forEach(b => {
+        if(b === "0") b = "o";
+        else if(b === "3") b = "e";
+        else if(b === "ü") b = "u";
+        else if(b === "ï") b = "i";
+        else if(b === "5") b = "5";
+        else if(b === "1") b = "i";
+        else if(b === "ㅇ") b = "o"
+      });
+      e = wordCharArr.join("");
+      if(e.includes(d)){
+        message.delete();
+        let memberId = message.member.id
+        let server = message.guild.name;
+        let member = message.member;
+        const warnEmbed = {
+          color: 0xFFFF00,
+          title: `Warn Log:`,
+          thumbnail: {
+            url: member.user.avatarURL(String)
+          },
+          fields: [
+            {
+            name: `Warned User: ${member.user.tag}`,
+            value: `Warn Reason: Use of Blacklisted Words\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
+            },
+          ],
+          timestamp: new Date(),
+            footer: {
+                text: 'KohBot by MasterKohder6',
+                icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+            },
+        };
+        client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
+        message.reply(`You cannot say that here!`);
+        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        return;
+      };
+    });
+    blacklistedWords.forEach(a => {
+      var wordCharArr = e.split("");
+      wordCharArr.forEach(b => {
+        if(b === "0") b = "o";
+        else if(b === "3") b = "e";
+        else if(b === "ü") b = "u";
+        else if(b === "ï") b = "i";
+        else if(b === "5") b = "5";
+        else if(b === "1") b = "i";
+        else if(b === "ㅇ") b = "o"
+      });
+      e = wordCharArr.join("");
+      if(e.toLowerCase() === a.toLowerCase()){
+        message.delete();
+        let memberId = message.member.id
+        let server = message.guild.name; 
+        let member = message.member; 
+        const warnEmbed = {
+          color: 0xFFFF00,
+          title: `Warn Log:`,
+          thumbnail: {
+            url: member.user.avatarURL(String)
+          },
+          fields: [
+            {
+            name: `Warned User: ${member.user.tag}`,
+            value: `Warn Reason: Use of Blacklisted Words\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
+            },
+          ],
+          timestamp: new Date(),
+            footer: {
+                text: 'KohBot by MasterKohder6',
+                icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+            },
+        };
+        client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
+        message.reply(`You cannot say that here!`);
+        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+      };
+    });
+  });
+});
 
 var savedMessage;
 var messageAuthor;
