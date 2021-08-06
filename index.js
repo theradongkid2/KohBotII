@@ -129,7 +129,9 @@ client.on("message", async message => {
     "nigger",
     "cock",
     "pussy",
-    "penis"
+    "penis",
+    "trannie",
+    "tranie"
   ];
 
   var blacklistedChar = [
@@ -147,7 +149,9 @@ client.on("message", async message => {
     "niggar",
     "niqqa",
     "niigar",
-    "nigger"
+    "nigger",
+    "trannie",
+    "tranie"
   ];
 
   var messageContent = message.content;
@@ -258,7 +262,9 @@ client.on("messageUpdate", async (oldMessage, message) => {
     "nigger",
     "cock",
     "pussy",
-    "penis"
+    "penis",
+    "trannie",
+    "tranie"
   ];
 
   var blacklistedChar = [
@@ -276,7 +282,9 @@ client.on("messageUpdate", async (oldMessage, message) => {
     "niggar",
     "niqqa",
     "niigar",
-    "nigger"
+    "nigger",
+    "trannie",
+    "tranie"
   ];
 
   var messageContent = message.content;
