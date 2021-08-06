@@ -232,6 +232,7 @@ client.on("message", async message => {
         client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
         message.reply(`You cannot say that here!`);
         client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        return;
       };
     });
   });
@@ -360,6 +361,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
         client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
         message.reply(`You cannot say that here!`);
         client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        return;
       };
     });
   });
