@@ -113,6 +113,7 @@ client.on("message", async message => {
   if(message.guild.id !== "832546634729914379") return;
   if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
   var blacklistedWords = [
+    "sex",
     "cunt",
     "nigga",
     "cum",
@@ -253,6 +254,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
   if(message.guild.id !== "832546634729914379") return;
   if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
   var blacklistedWords = [
+    "sex",
     "cunt",
     "nigga",
     "cum",
