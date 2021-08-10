@@ -204,6 +204,7 @@ client.on("message", async message => {
         return;
       };
     });
+    
     blacklistedWords.forEach(a => {
       var wordCharArr = e.split("");
       wordCharArr.forEach(b => {
@@ -532,7 +533,7 @@ client.on("message", async message => {
             value: `Usage: k!meme [sends a random meme]`
             },
             {
-              name: `Say`,
+              name: `Say (Restricted)`,
               value: `Usage: k!say a sentence [used to repeat a message, and delete the commanding message (looks like bot speaks)]`
               },
                   {
@@ -642,6 +643,7 @@ client.on("message", async message => {
     message.channel.send(`The time is: ${date.getHours() + 10}:${date.getMinutes()}:${seconds}, in AEST.`)
   }
   if(command === "say") {
+    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
       const sayMessage = args.join(" ");
       message.delete().catch(O_o=>{}); 
       message.channel.send(`${sayMessage}`);
