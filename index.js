@@ -47,11 +47,79 @@ client.on("ready", () => {
     client.guilds.cache.forEach((guild) => {
         console.log(" - " + guild.name);
     });
-  scheduleWarning('18:30', function() { client.channels.cache.get("863313143161159720").send("hi"); });
+  const channel = client.channels.cache.get("868370150972330054");
+  if (!channel) return console.error("The channel does not exist!");
+  channel.join().then(connection => {
+    // Yay, it worked!
+    console.log("Successfully connected.");
+  }).catch(e => {
+    // Oh no, it errored! Let's log it to console :)
+    console.error(e);
+  });
 });
 
 
 client.on("message", async message => {
+  if(message.author.bot) return;
+  var messageContent = message.content;
+  if(messageContent.startsWith("https://tenor.com/view/")) return;
+  if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+    message.delete();
+    let memberId = message.member.id
+    let server = message.guild.name;
+    
+      const warnEmbed = {
+        color: 0xFFFF00,
+        title: `Warn Log:`,
+        thumbnail: {
+          url: member.user.avatarURL(String)
+        },
+        fields: [
+          {
+          name: `Warned User: ${member.user.tag}`,
+          value: `Warn Reason: Links in General\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
+          },
+        ],
+        timestamp: new Date(),
+          footer: {
+              text: 'KohBot by MasterKohder6',
+              icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+          },
+      };
+    client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
+    message.reply(`You cannot send links here!`);
+    client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for sending links in general!`);
+  } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+    message.delete();
+    let memberId = message.member.id
+    let server = message.guild.name;
+    
+      const warnEmbed = {
+        color: 0xFFFF00,
+        title: `Warn Log:`,
+        thumbnail: {
+          url: member.user.avatarURL(String)
+        },
+        fields: [
+          {
+          name: `Warned User: ${member.user.tag}`,
+          value: `Warn Reason: Links in General\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
+          },
+        ],
+        timestamp: new Date(),
+          footer: {
+              text: 'KohBot by MasterKohder6',
+              icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+          },
+      };
+    client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
+    message.reply(`You cannot send links here!`);
+    client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for sending links in general!`);
+  };
+})
+
+client.on("messageUpdate", async (oldMessage, message) => {
+  if(message.author.bot) return;
   var messageContent = message.content;
   if(messageContent.startsWith("https://tenor.com/view/")) return;
   if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
@@ -110,6 +178,7 @@ client.on("message", async message => {
 })
 
 client.on("message", async message => {
+  if(message.author.bot) return;
   if(message.guild.id !== "832546634729914379") return;
   //if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
   var blacklistedWords = [
@@ -203,7 +272,8 @@ client.on("message", async message => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         return;
       };
     });
@@ -245,7 +315,8 @@ client.on("message", async message => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         return;
       };
     });
@@ -253,6 +324,7 @@ client.on("message", async message => {
 });
 
 client.on("messageUpdate", async (oldMessage, message) => {
+  if(message.author.bot) return;
   if(message.guild.id !== "832546634729914379") return;
   //if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
   var blacklistedWords = [
@@ -346,7 +418,8 @@ client.on("messageUpdate", async (oldMessage, message) => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         return;
       };
     });
@@ -387,7 +460,8 @@ client.on("messageUpdate", async (oldMessage, message) => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         return;
       };
     });
@@ -653,6 +727,10 @@ client.on("message", async message => {
       const sayMessage = args.join(" ");
       message.delete().catch(O_o=>{}); 
       message.channel.send(`${sayMessage}`);
+  };
+  if(command === "h") {
+      const sayMessage = args.join(" ");
+      client.channels.cache.get("863313143161159720").send(`${sayMessage}`);
   };
   if(command === "ping") {
       const m = await message.channel.send("Ping!");
