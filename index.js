@@ -231,7 +231,7 @@ client.on("message", async message => {
     "trannie",
     "tranie"
   ];
-
+  var warned = false;
   var messageContent = message.content;
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
@@ -261,7 +261,7 @@ client.on("message", async message => {
           fields: [
             {
             name: `Warned User: ${member.user.tag}`,
-            value: `Warn Reason: Use of Blacklisted Words\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
+            value: `Warn Reason: Use of Blacklisted Characters\n Message: ${messageContent}\n User Id: ${memberId}\n Moderator: AutoMod\n Server: ${server}`
             },
           ],
           timestamp: new Date(),
@@ -274,11 +274,13 @@ client.on("message", async message => {
         //message.reply(`You cannot say that here!`);
         client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
         //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        warned = true;
         return;
       };
     });
     
     blacklistedWords.forEach(a => {
+      if(warned === true) return;
       var wordCharArr = e.split("");
       wordCharArr.forEach(b => {
         if(b === "0") b = "o";
@@ -321,6 +323,7 @@ client.on("message", async message => {
       };
     });
   });
+  warned = false;
 });
 
 client.on("messageUpdate", async (oldMessage, message) => {
@@ -377,7 +380,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
     "trannie",
     "tranie"
   ];
-
+  var warned = false;
   var messageContent = message.content;
   var messageContentArr = messageContent.split(" ");
   messageContentArr.forEach(e => {
@@ -420,10 +423,12 @@ client.on("messageUpdate", async (oldMessage, message) => {
         //message.reply(`You cannot say that here!`);
         client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
         //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
+        warned = true;
         return;
       };
     });
     blacklistedWords.forEach(a => {
+      if(warned) return;
       var wordCharArr = e.split("");
       wordCharArr.forEach(b => {
         if(b === "0") b = "o";
@@ -466,6 +471,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
       };
     });
   });
+  warned = false;
 });
 
 var savedMessage;
