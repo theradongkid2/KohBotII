@@ -243,6 +243,8 @@ client.on("message", async message => {
         else if(b === "5") b = "5";
         else if(b === "1") b = "i";
         else if(b === "ㅇ") b = "o"
+        else if(b === "ó") b = "o";
+        else if(b === "ö") b = "o";
       });
       e = wordCharArr.join("");
       if(e.includes(d)){
@@ -287,7 +289,9 @@ client.on("message", async message => {
         else if(b === "ï") b = "i";
         else if(b === "5") b = "5";
         else if(b === "1") b = "i";
-        else if(b === "ㅇ") b = "o"
+        else if(b === "ㅇ") b = "o";
+        else if(b === "ó") b = "o";
+        else if(b === "ö") b = "o";
       });
       e = wordCharArr.join("");
       if(e.toLowerCase() === a.toLowerCase()){
