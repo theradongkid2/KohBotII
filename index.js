@@ -63,7 +63,7 @@ client.on("message", async message => {
   if(message.author.bot) return;
   var messageContent = message.content;
   if(messageContent.startsWith("https://tenor.com/view/")) return;
-  if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+  if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))){
     message.delete();
     let memberId = message.member.id
     let server = message.guild.name;
@@ -89,7 +89,7 @@ client.on("message", async message => {
     client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     message.reply(`You cannot send links here!`);
     client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for sending links in general!`);
-  } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+  } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))){
     message.delete();
     let memberId = message.member.id
     let server = message.guild.name;
@@ -108,9 +108,9 @@ client.on("message", async message => {
         ],
         timestamp: new Date(),
           footer: {
-              text: 'KohBot by MasterKohder6',
-              icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
-          },
+            text: 'KohBot by MasterKohder6',
+            icon_url: 'https://cdn.discordapp.com/avatars/730004103719288904/ce269b42ef41f924bdeb4e3de9d0cb26.png?size=2048',
+        },
       };
     client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     message.reply(`You cannot send links here!`);
@@ -122,7 +122,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
   if(message.author.bot) return;
   var messageContent = message.content;
   if(messageContent.startsWith("https://tenor.com/view/")) return;
-  if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+  if(message.channel.id === "863313143161159720" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))){
     message.delete();
     let memberId = message.member.id
     let server = message.guild.name;
@@ -148,7 +148,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
     client.channels.cache.get("839002657908850688").send({ embed: warnEmbed });
     message.reply(`You cannot send links here!`);
     client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for sending links in general!`);
-  } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))){
+  } else if(message.channel.id === "863313541830148126" && messageContent.includes("http") && messageContent.includes("://") && !message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))){
     message.delete();
     let memberId = message.member.id
     let server = message.guild.name;
@@ -180,7 +180,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
 client.on("message", async message => {
   if(message.author.bot) return;
   if(message.guild.id !== "832546634729914379") return;
-  //if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
+  //if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))) return;
   var blacklistedWords = [
     "nigga",
     "cum",
@@ -331,7 +331,7 @@ client.on("message", async message => {
 client.on("messageUpdate", async (oldMessage, message) => {
   if(message.author.bot) return;
   if(message.guild.id !== "832546634729914379") return;
-  //if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
+  //if(message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))) return;
   var blacklistedWords = [
     "nigga",
     "cum",
@@ -729,7 +729,7 @@ client.on("message", async message => {
     message.channel.send(`The time is: ${date.getHours() + 10}:${date.getMinutes()}:${seconds}, in AEST.`)
   }
   if(command === "say") {
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name))) return;
+    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))) return;
       const sayMessage = args.join(" ");
       message.delete().catch(O_o=>{}); 
       message.channel.send(`${sayMessage}`);
@@ -743,7 +743,7 @@ client.on("message", async message => {
       m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
   };
   if(command === "purge") {
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
+    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       const deleteCount = parseInt(args[0], 10);
       if(!deleteCount || deleteCount < 2 || deleteCount > 10000)
@@ -754,7 +754,7 @@ client.on("message", async message => {
     }
   
      if(command === "kick") {
-      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
+      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
       if(!member)
@@ -796,7 +796,7 @@ client.on("message", async message => {
   
   
     if(command === "ban") {
-      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
+      if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
       let member = message.mentions.members.first();
       if(!member)
@@ -839,7 +839,7 @@ client.on("message", async message => {
   
 
   if(command === "warn"){
-    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)))
+    if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name)))
         return message.reply("Sorry, you don't have permissions to use this!");
     let moderator = message.member.user
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
@@ -1234,7 +1234,7 @@ client.on("message", async message => {
   }
 
   if(command === "mute"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
+    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
     const Role = "832580239061549126";
     let member = message.mentions.members.first();
@@ -1273,7 +1273,7 @@ client.on("message", async message => {
   }
 
   if(command === "unmute"){
-    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator", "↷ admin", "↷ moderators", "・trial"].includes(r.name)) )
+    if(!message.member.roles.cache.some(r=>[ "Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
     const Role = "832580239061549126";
     let member = message.mentions.members.first();
