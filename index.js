@@ -212,7 +212,6 @@ client.on("message", async message => {
   ];
 
   var blacklistedChar = [
-    "cunt",
     "nigga",
     "faggot",
     "hentai",
@@ -367,7 +366,6 @@ client.on("messageUpdate", async (oldMessage, message) => {
   ];
 
   var blacklistedChar = [
-    "cunt",
     "nigga",
     "faggot",
     "hentai",
