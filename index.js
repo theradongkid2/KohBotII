@@ -278,7 +278,7 @@ client.on("message", async message => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> 3d blacklisted word`);
         //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         warned = true;
         return;
@@ -325,7 +325,7 @@ client.on("message", async message => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> 3d blacklisted word`);
         //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         return;
       };
@@ -433,7 +433,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> 3d blacklisted word`);
         //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         warned = true;
         return;
@@ -477,7 +477,7 @@ client.on("messageUpdate", async (oldMessage, message) => {
         };
         client.channels.cache.get("873469804982464532").send({ embed: warnEmbed });
         //message.reply(`You cannot say that here!`);
-        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> blacklisted word`);
+        client.channels.cache.get("873469804982464532").send(`-warn <@${memberId}> 3d blacklisted word`);
         //client.users.cache.get(message.member.id).send(`You have been warned in the Sydney Highschool Community for Using Blacklisted Words!`);
         return;
       };
