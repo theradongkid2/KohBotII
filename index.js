@@ -743,6 +743,7 @@ client.on("message", async message => {
   if(command === "say") {
     if(!message.member.roles.cache.some(r=>["Administrator", "Moderator", "↷ Admin", "↷ Senior Mod", "↷ Moderators", "・Trial"].includes(r.name))) return;
       const sayMessage = args.join(" ");
+      if(message.member = "723757155462938694") return;
       message.delete().catch(O_o=>{}); 
       message.channel.send(`${sayMessage}`);
   };
